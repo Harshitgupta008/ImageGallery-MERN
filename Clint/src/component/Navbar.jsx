@@ -47,6 +47,7 @@ const Navbar = () => {
                 <h3 className="cancle-hide" onClick={Closeslide}>&#x2715;</h3>
                 <div className="hide-nav-link"><Link className="nav-link" to={"/home"}>Home</Link></div>
                 <div className="hide-nav-link"><Link className="nav-link" to={"/about"}>About</Link></div>
+                <div className="hide-nav-link"><Link className="nav-link" to={"/contact"}>Contact</Link></div>
                 {
                     isLoggedin ?
                         <div className="hide-nav-link"><Link className="nav-link" to={"/logout"}>Logout</Link></div>

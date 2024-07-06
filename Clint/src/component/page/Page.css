@@ -1,0 +1,128 @@
+.container1_banner_allpage {
+    height: 120px;
+    width: 100%;
+    margin-top: 97px;
+    background-color: rgb(255, 255, 254);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+
+.banner_text3 {
+    color: #8224E3;
+}
+
+.banner_text1 {
+    cursor: pointer;
+}
+
+
+
+
+/* contact start */
+.container_contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    height: fit-content;
+}
+
+.contact_card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 95%;
+    height: fit-content;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.15);
+}
+.contact_lable{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+}
+.contact_inner_card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 85%;
+    height: fit-content;
+    gap: 10px;
+}
+
+.contact_inner_card input,
+.contact_inner_card textarea {
+    width: 80%;
+    padding: 5px;
+    height: 35px;
+    background-color: #f1e9f8f0;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.contact_inner_card2 {
+    width: 81%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 10px;
+}
+
+.contact_inner_card textarea {
+    height: 80px;
+}
+
+@media only screen and (max-width: 850px) {
+    .contact_inner_card2 {
+        width: 100%;
+    }
+
+    .contact_inner_card input,
+    .contact_inner_card textarea {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 670px) {
+    .contact_inner_card2 {
+        width: 100%;
+        flex-wrap: wrap;
+
+    }
+}
+
+.contact_card2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact_card2 button {
+    margin-top: 10px;
+    background-color: #8224E3;
+    height: 50px;
+    width: 120px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.contact_card2 button:hover {
+    background-color: #8240c5;
+}
