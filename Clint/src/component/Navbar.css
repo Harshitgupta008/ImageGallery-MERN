@@ -1,0 +1,136 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    position: relative;
+    background-color: #F0F4F7;
+    font-family: "Poppins",sans-serif;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+.container-navbar-header {
+    position: fixed;
+    top: 0;
+    height: 95px;
+    width: 100%;
+    background-color:white;
+    color: #8224E3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 500;
+}
+
+.nav-link{
+    color: #8224E3;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.container-navcard {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    font-size: 18px;
+    margin: 0 15px;
+
+}
+
+.logoimageGalerry img{
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+}
+
+.slidenavbar-divcard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 35px;
+    height: 25px;
+    gap: 5px;
+}
+.slidenavbar-divcard .hide-div{
+    background-color: #8224E3;
+    height: 3px;
+    width: 25px;
+    border-radius: 20%;
+}
+
+
+
+.hidebut {
+    display: none;
+}
+
+@media only screen and (max-width: 450px) {
+    .unhide {
+        display: none;
+    }
+
+    .hidebut {
+        display: inline;
+    }
+}
+
+.container-navcard-hide {
+    background-color: white;
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-size: 20px;
+    width: 100%;
+    height: 0;
+    /* height: 250px; */
+    overflow-x: hidden;
+    overflow-y: hidden;
+    transition: all .5s ease-in-out;
+
+}
+
+.cancle-hide {
+    position: absolute;
+    top: 5px;
+    right: 35px;
+    height: 40px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cancle-hide:hover {
+    color: black;
+}
+
+.hide-nav-link {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-link:hover {
+    color: black;
+}
+
+button{
+    height: 50px;
+    width: 120px;
+    border-radius: 20px;
+    border: none;
+    background-color: #8224E3;
+    color: white;
+    font-weight: bold;
+}
