@@ -20,7 +20,7 @@ const Navbar = () => {
     return (
         <div className="container-navbar-header">
             <div className="container-navcard">
-                <div className="logoimageGalerry"><img src={imagelogo} alt="ImageGallery" /></div>
+                <div className="logoimageGalerry"><a href="https://www.instagram.com/harshit__7548/"><img src={imagelogo} alt="ImageGallery" /></a></div>
             </div>
             <div className="container-navcard unhide">
                 <div><Link className="nav-link" to={"/home"}>Home</Link></div>

@@ -1,4 +1,7 @@
 import { useNavigate } from 'react-router-dom'
+import Linkdin from "../image/linkedin.png"
+import Github from "../image/github.png"
+import Instagram from "../image/instagram.png"
 import './Page.css'
 function Contact() {
     const navigate = useNavigate();
@@ -14,8 +17,12 @@ function Contact() {
             </div>
             <div className='container_contact'>
                 <div className='contact_card'>
-                    <h1>Contact Me ! 😊</h1>
-                    <div className="line-contact"></div>
+                    <h1>Contact Me! 😊</h1>
+                    <div className='contact_image'>
+                        <a href="https://www.linkedin.com/in/harshit-gupta-667545235/"><img src={Linkdin} alt="insta" /></a>
+                        <a href="https://www.instagram.com/harshit__7548/"><img src={Instagram} alt="linkedin" /></a>
+                        <a href="https://github.com/Harshit0032"><img src={Github} alt="git" /></a>
+                    </div>
                     <div className='contact_inner_card'>
                         <div className='contact_inner_card2'>
 

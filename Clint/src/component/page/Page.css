@@ -28,7 +28,9 @@
     align-items: center;
     margin-top: 20px;
     height: fit-content;
+
 }
+
 
 .contact_card {
     display: flex;
@@ -38,16 +40,39 @@
     gap: 10px;
     width: 95%;
     height: fit-content;
-    padding: 10px;
+    padding: 30px 10px;
     background-color: white;
+    border-radius: 10px;
     box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.15);
 }
-.contact_lable{
+
+.contact_image {
+    margin-top: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+
+}
+
+.contact_image img {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+}
+
+.contact_image img:hover {
+    background-color: #8224E3;
+}
+
+.contact_lable {
     display: flex;
     flex-direction: column;
     gap: 4px;
     width: 100%;
 }
+
 .contact_inner_card {
     display: flex;
     justify-content: center;
@@ -68,6 +93,7 @@
     border: none;
     border-radius: 10px;
     font-size: 15px;
+    font-weight: bold;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
@@ -125,4 +151,199 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .contact_card2 button:hover {
     background-color: #8240c5;
+}
+
+/*  Contact page css end */
+
+
+/*  Register page css start here */
+
+
+
+.container_register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 105px;
+    height: fit-content;
+    padding-bottom: 40px;
+}
+
+
+.register_card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    width: 95%;
+    height: fit-content;
+    padding: 30px 10px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.15);
+}
+
+.line-register {
+    width: 140px;
+    height: 5px;
+    border-radius: 10px;
+    background-color: #8224E3;
+}
+
+.register_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.register_form input {
+    width: 350px;
+    padding: 5px 15px;
+    height: 35px;
+    background-color: #f1e9f8f0;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.register_card2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register_card2 button {
+    margin-top: 10px;
+    background-color: #8224E3;
+    height: 50px;
+    width: 120px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.register_card2 button:hover {
+    background-color: #8240c5;
+}
+
+.register_forget {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.register_forget h5 {
+    cursor: pointer;
+}
+
+.register_forget h5:hover {
+    color: #8224E3;
+}
+
+
+
+/* login page css start here  */
+
+
+.container_login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 105px;
+    height: fit-content;
+    padding-bottom: 40px;
+}
+
+
+.login_card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    width: 95%;
+    height: fit-content;
+    height: 450px;
+    padding: 30px 10px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.15);
+}
+
+.line-login {
+    width: 100px;
+    height: 5px;
+    border-radius: 10px;
+    background-color: #8224E3;
+}
+
+.login_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.login_form input {
+    width: 350px;
+    padding: 5px 15px;
+    height: 35px;
+    background-color: #f1e9f8f0;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.login_card2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login_card2 button {
+    margin-top: 10px;
+    background-color: #8224E3;
+    height: 50px;
+    width: 120px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.login_card2 button:hover {
+    background-color: #8240c5;
+}
+
+.login_forget {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.login_forget h5 {
+    cursor: pointer;
+}
+
+.login_forget h5:hover {
+    color: #8224E3;
+}
+
+@media only screen and (max-width: 430px) {
+    .register_form input {
+        width: 80%;
+    }
+
+    .login_form input {
+        width: 80%;
+    }
 }
