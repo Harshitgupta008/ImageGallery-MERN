@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv"
-import data from "../Db/userdatabase";
 
 const UserShema = new mongoose.Schema({
     name: {
@@ -60,11 +59,11 @@ UserShema.pre('save', async function (next) {
         const round = 10;
         if (this.isModified("password")) {
             this.password = await bcrypt.hash(this.password, round);
-            return this.password;
+            this.cpassword = await bcrypt.hash(this.cpassword, round);
         }
         next();
     } catch (error) {
-        console.log(`error in schema bcrypt part :: ${error}`)
+       
     }
 })
 
@@ -74,9 +73,7 @@ dotenv.config();
 const SecreateKey  = process.env.SECREATE_KEY;
 UserShema.methods.GenrateToken = async function(payload){
     try {
-        const token = await jwt.sign(payload,SecreateKey,{
-            expiresIn:new Date(data.now()+5*24*60*60*1000)
-        })
+        const token = await jwt.sign(payload,SecreateKey)
         return token;
     } catch (error) {
         console.log(`error in schema Genratetoken part :: ${error}`)
