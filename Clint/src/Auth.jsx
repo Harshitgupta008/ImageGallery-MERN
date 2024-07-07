@@ -6,9 +6,8 @@ export const AuthProvider = ({ children }) => {
     const [token, setToken] = useState(localStorage.getItem("token"));
 
     const isLoggedin = !!token;
-    const GenrateToken = () => {
-        const tokens = "abcdefsef";
-        return localStorage.setItem("token", tokens);
+    const GenrateToken = (token) => {;
+        return localStorage.setItem("token", token);
     }
 
     const LogoutUser = () => {

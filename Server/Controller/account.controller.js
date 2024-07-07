@@ -57,7 +57,7 @@ const LoginUser = async (req, res) => {
             const token = await checkUser.GenrateToken(payload);
             return res.status(200).json({
                 "message": "loginsuccessfully",
-                token: token,
+                "token": token,
                 "name":checkUser.name
             })
         } else {

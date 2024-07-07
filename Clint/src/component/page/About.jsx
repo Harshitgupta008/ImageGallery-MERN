@@ -24,7 +24,13 @@ function About() {
                 <h2 className='banner_text3'>About</h2>
             </div>
             <div style={{ height: "60vh", width: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                <h2>This is About page</h2>
+                {
+                    !isLoggedin ?
+                    <h2>This is About page</h2>
+                    :
+                    <h2>Welcom! </h2>
+
+                }
             </div>
         </>
     )
