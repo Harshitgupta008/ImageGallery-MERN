@@ -58,7 +58,6 @@ const LoginUser = async (req, res) => {
             return res.status(200).json({
                 "message": "loginsuccessfully",
                 "token": token,
-                "name":checkUser.name
             })
         } else {
             return res.status(400).send(" Check your email or passowrd ")
@@ -68,9 +67,26 @@ const LoginUser = async (req, res) => {
     }
 }
 
-const Getuser = (req, res) => {
-    return res.send("yes done get part ")
+
+
+// const ContactGet = async (req,res)=>{
+//     try {
+//         const userData = await req.user;
+//         return res.status(200).json({ userData });
+//     } catch (error) {
+//         console.log(`error in getuser page :: ${error}`)
+        
+//     }
+// }
+
+const UserAuthentication = async (req,res)=>{
+    try {
+        const userData = await req.user;
+        return res.status(200).json({ userData });
+    } catch (error) {
+        console.log(`error in getuser page :: ${error}`)
+        
+    }
 }
 
-
-export { Getuser, RegisterUser, LoginUser };
+export { RegisterUser, LoginUser, UserAuthentication };

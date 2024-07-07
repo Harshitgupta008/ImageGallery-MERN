@@ -1,10 +1,12 @@
 import { useEffect } from "react";
-import { Useauth } from "../../Auth"
 import { useNavigate } from "react-router-dom";
 import './Page.css'
+import { Useauth } from "../../Auth"
 function About() {
     const { isLoggedin } = Useauth();
     const navigate = useNavigate();
+    const { user } = Useauth();    
+
     const SendHomepage = () => {
         return navigate("/")
     }
@@ -28,7 +30,7 @@ function About() {
                     !isLoggedin ?
                     <h2>This is About page</h2>
                     :
-                    <h2>Welcom! </h2>
+                    <h2>{`Welcome!  ${user.name} 😊`}</h2>
 
                 }
             </div>
