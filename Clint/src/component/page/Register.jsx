@@ -16,7 +16,7 @@ function Register() {
         e.preventDefault();
         const { name, email, number, place, password, cpassword } = user;
         if (!name || !email || !number || !place || !password || !cpassword) {
-            window.alert("All field are mendatry");
+            return window.alert("All field are mendatry");
         }
         if (password !== cpassword) {
             window.alert("Password mismatch");
@@ -27,21 +27,21 @@ function Register() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body:JSON.stringify({
+                body: JSON.stringify({
                     name, email, number, place, password, cpassword
                 })
             });
-            if(sendData.status === 200){
+            if (sendData.status === 200) {
                 window.alert(`Registeration Successfluly`)
                 navigate("/login")
-            }else if(sendData.status === 400){
+            } else if (sendData.status === 400) {
                 window.alert(`data already exist`);
-            }else{
+            } else {
                 window.alert(`something erro in fetching problem`);
 
             }
         } catch (error) {
-           console.log(`registeration error on fetching :: ${error}`)
+            console.log(`registeration error on fetching :: ${error}`)
         }
 
     }

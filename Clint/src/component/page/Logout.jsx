@@ -15,6 +15,7 @@ function Logout() {
     const RemoveToken = () => {
         LogoutUser();
         navigate("/login")
+        window.location.reload();
 
     }
 

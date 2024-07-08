@@ -69,24 +69,35 @@ const LoginUser = async (req, res) => {
 
 
 
-// const ContactGet = async (req,res)=>{
-//     try {
-//         const userData = await req.user;
-//         return res.status(200).json({ userData });
-//     } catch (error) {
-//         console.log(`error in getuser page :: ${error}`)
-        
-//     }
-// }
+const UserMessageSend = async (req, res) => {
+    const { name, email, message } = req.body;
+    if(!name || !email || !message){
+        return res.status(400).send("all field are mendaterry")
+    }
+    try {
+        const findUser = await User.findOne({ email });
+        if(findUser){
+            await findUser.CollectMessages( name, message );
+            return res.status(200).send(" Message was send successfully");
+        }else{
+            return res.status(400).send(" User not found ");
+        }
+    } catch (error) {
+        console.log(`error in getuser page :: ${error}`)
 
-const UserAuthentication = async (req,res)=>{
+    }
+}
+
+
+
+const UserAuthentication = async (req, res) => {
     try {
         const userData = await req.user;
         return res.status(200).json({ userData });
     } catch (error) {
         console.log(`error in getuser page :: ${error}`)
-        
+
     }
 }
 
-export { RegisterUser, LoginUser, UserAuthentication };
+export { RegisterUser, LoginUser, UserAuthentication, UserMessageSend };

@@ -94,6 +94,7 @@
     border-radius: 10px;
     font-size: 15px;
     font-weight: bold;
+    
 }
 
 input[type="number"]::-webkit-outer-spin-button,

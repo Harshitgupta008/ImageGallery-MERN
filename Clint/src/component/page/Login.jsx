@@ -14,11 +14,11 @@ function Login() {
     }
 
     // login user 
-    const Logindata = async (e)=>{
+    const Logindata = async (e) => {
         e.preventDefault();
 
-        if(!email || !password){
-            window.alert("All field are mendatry");
+        if (!email || !password) {
+            return window.alert("All field are mendatry");
         }
         try {
             const logingData = await fetch("/api/login", {
@@ -26,20 +26,20 @@ function Login() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body:JSON.stringify({
-                     email,  password
+                body: JSON.stringify({
+                    email, password
                 })
             });
-            if(logingData.status === 200){
+            if (logingData.status === 200) {
                 const userToken = await logingData.json();
                 GenrateToken(userToken.token);
                 // console.log(userToken.token)
                 window.alert(`login Successfluly`)
                 navigate("/home")
                 window.location.reload()
-            }else if(logingData.status === 400){
+            } else if (logingData.status === 400) {
                 window.alert(`User not found`);
-            }else{
+            } else {
                 window.alert(`something erro in fetching problem`);
 
             }
@@ -62,8 +62,8 @@ function Login() {
                     <div className="line-login"></div>
                     <form className="login_form" onSubmit={Logindata}>
 
-                        <input type="email" name="email" placeholder="Enter Your Email" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
-                        <input type="password" name="password" placeholder="Enter Your Password" value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
+                        <input type="email" name="email" placeholder="Enter Your Email" value={email} onChange={(e) => { setEmail(e.target.value) }} />
+                        <input type="password" name="password" placeholder="Enter Your Password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
                         <div className="login_forget">
                             <h5 onClick={NoAccount}>Don't have any account</h5>
                             <h5>Forget password ?</h5>
