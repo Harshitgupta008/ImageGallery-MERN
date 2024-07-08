@@ -90,6 +90,8 @@ const UserMessageSend = async (req, res) => {
 
 
 
+
+
 const UserAuthentication = async (req, res) => {
     try {
         const userData = await req.user;
@@ -100,4 +102,20 @@ const UserAuthentication = async (req, res) => {
     }
 }
 
-export { RegisterUser, LoginUser, UserAuthentication, UserMessageSend };
+const GetAllmessage = async (req, res) => {
+    try {
+        const userData = await req.user;
+        if(userData){
+            const allmessage = await userData.messages;
+            const msg = allmessage.map((ele)=>({"message":ele.message,"name":ele.name}))
+            return res.status(200).json({ msg });
+        }else{
+            return res.status(400).send("message not found")
+        }
+    } catch (error) {
+        console.log(`error in getuser message page :: ${error}`)
+
+    }
+}
+
+export { RegisterUser, LoginUser, UserAuthentication, UserMessageSend, GetAllmessage };
