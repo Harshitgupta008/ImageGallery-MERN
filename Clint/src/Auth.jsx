@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }) => {
             });
             if(checkUser.status === 200){
                 const data = await checkUser.json();
-                setUser([data.userData]);
+                setUser(data.userData);
                 // console.log("data "+data.userData)  
             }else{
                 console.log("token not found")

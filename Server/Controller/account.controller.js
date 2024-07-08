@@ -107,7 +107,7 @@ const GetAllmessage = async (req, res) => {
         const userData = await req.user;
         if(userData){
             const allmessage = await userData.messages;
-            const msg = allmessage.map((ele)=>({"message":ele.message,"name":ele.name}))
+            const msg = allmessage.map((ele)=>({"message":ele.message,"name":ele.name,"date":ele.date}))
             return res.status(200).json({ msg });
         }else{
             return res.status(400).send("message not found")

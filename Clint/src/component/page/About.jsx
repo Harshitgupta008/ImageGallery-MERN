@@ -6,14 +6,13 @@ function About() {
     const { isLoggedin } = Useauth();
     const navigate = useNavigate();
     const { user } = Useauth();
-    // const { allMessage } = Useauth();
 
     const SendHomepage = () => {
         return navigate("/")
     }
     useEffect(() => {
         if (isLoggedin) {
-            console.log("Welocme")
+            // console.log("Welocme")
         } else {
             window.alert("You can not see About page without login")
             return navigate("/login")
@@ -36,7 +35,6 @@ function About() {
                         :
                         <>
                             <h2>{`Welcome!  ${user.name} 😊`}</h2>
-
                         </>
 
                 }

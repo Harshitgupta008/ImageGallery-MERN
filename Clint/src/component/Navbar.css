@@ -2,8 +2,6 @@
     margin: 0;
     padding: 0;
 }
-
-
 body {
     position: relative;
     background-color: #F0F4F7;
@@ -16,7 +14,7 @@ html {
 .container-navbar-header {
     position: fixed;
     top: 0;
-    height: 95px;
+    height: 90px;
     width: 100%;
     background-color:white;
     color: #8224E3;

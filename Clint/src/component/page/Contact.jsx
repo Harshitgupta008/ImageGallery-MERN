@@ -1,27 +1,31 @@
-import { json, useNavigate } from 'react-router-dom'
 import Linkdin from "../image/linkedin.png"
 import Github from "../image/github.png"
 import Instagram from "../image/instagram.png"
+import imageicon from "../image/imagesicon.jpg"
+import { useNavigate } from 'react-router-dom'
 import './Page.css'
 import { Useauth } from '../../Auth'
-import {  useState } from 'react'
+import { useEffect, useState } from 'react'
 function Contact() {
     const [contactData, setContactDate] = useState({
         name: "", number: "", email: "", message: "",
     })
+    const [messageCard, setMessageCard] = useState({ display: "none" })
 
     const navigate = useNavigate();
-    const [datacheck,setDatacheck] = useState(true);
+    const [datacheck, setDatacheck] = useState(true);
     const { user } = Useauth();
     const { isLoggedin } = Useauth();
 
+    // get all message from here 
+    const { allMessage } = Useauth();
     const inputHandler = (e) => {
         const { name, value } = e.target;
         setContactDate({ ...contactData, [name]: value });
     }
 
     // for fill detail after login
-    if(datacheck && user){
+    if (datacheck && user) {
         setContactDate({
             name: user.name, number: user.number, email: user.email, message: "",
         })
@@ -30,39 +34,40 @@ function Contact() {
 
 
     // send messages
-    const postMessage = async (e)=>{
+    const postMessage = async (e) => {
         e.preventDefault();
-        if(isLoggedin){
+        if (isLoggedin) {
 
-            const {  name, email, message } = contactData;
-            if(!message){
-               return window.alert("fill your message")
+            const { name, email, message } = contactData;
+            if (!message) {
+                return window.alert("fill your message")
             }
             try {
-                const sendMessage = await fetch("/api/MessageSend",{
-                    method:"POST",
-                    headers:{
-                        "Content-Type" : "application/json",
+                const sendMessage = await fetch("/api/MessageSend", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
                         name, email, message
                     })
                 });
-                console.log("email are : "+email);
-                if(sendMessage.ok){
-                    window.alert("Your message was sent successfully");
+                console.log("email are : " + email);
+                if (sendMessage.ok) {
+                    window.alert("Message Sent Successfully");
+                    window.location.reload()
                     setContactDate({
                         name: user.name, number: user.number, email: user.email, message: "",
                     })
-                }else if(sendMessage.status === 400){
+                } else if (sendMessage.status === 400) {
                     window.alert("user not found")
-                }else{
+                } else {
                     window.alert(`something erro in fetching problem`);
                 }
             } catch (error) {
                 window.alert(`something erro in fetching problem::Message`);
             }
-        }else{
+        } else {
             window.alert("please create your account first")
         }
     }
@@ -71,8 +76,12 @@ function Contact() {
         return navigate("/")
     }
 
-    
-
+    const CloseMessageCard = () => {
+        setMessageCard({ display: "none" })
+    }
+    const OpenMessageCard = () => {
+        setMessageCard({ display: "flex" })
+    }
     return (
         <>
             <div className='container1_banner_allpage'>
@@ -82,6 +91,9 @@ function Contact() {
             </div>
             <div className='container_contact'>
                 <div className='contact_card'>
+                    <div className='imageicon'>
+                        <img onClick={OpenMessageCard} src={imageicon} alt="messages" />
+                    </div>
                     <h1>Contact Me! 😊</h1>
                     <div className='contact_image'>
                         <a href="https://www.linkedin.com/in/harshit-gupta-667545235/"><img src={Linkdin} alt="insta" /></a>
@@ -116,6 +128,40 @@ function Contact() {
                             <button type='submit'>Submit</button>
                         </div>
                     </form>
+
+                    {/* contact message page start  */}
+                    {
+                        user ?
+
+
+                            <div style={messageCard} className='Whole_message_Div'>
+                                <div className="contact-cancle">
+                                    <h2>Messages</h2>
+                                    <h3 onClick={CloseMessageCard} className="cancle-hide-banner">&#x2715;</h3>
+                                    <div className="container-contact-banner">
+                                        {
+                                            allMessage.map((ele, i) => {
+                                                return (
+                                                    <>
+                                                        <div className="contact-banner1" key={i}>
+                                                            <h4>{ele.message}</h4>
+                                                            <div className="contact-date">
+                                                                <p>{ele.date.slice(2, 10)}</p>
+                                                            </div>
+                                                        </div>
+                                                    </>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            :
+                            <>
+                            </>
+                    }
+                    {/* contact message page end  */}
+
                 </div>
             </div>
         </>

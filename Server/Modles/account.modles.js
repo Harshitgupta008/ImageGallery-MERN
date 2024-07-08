@@ -37,6 +37,10 @@ const UserShema = new mongoose.Schema({
             message: {
                 type: String,
                 require: true
+            },
+            date : {
+                type:Date,
+                default:Date.now
             }
         }
     ],
@@ -49,6 +53,10 @@ const UserShema = new mongoose.Schema({
             image: {
                 data: Buffer,
                 type: String
+            },
+            date : {
+                type:Date,
+                default:Date.now,
             },
         }
     ]

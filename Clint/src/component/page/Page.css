@@ -1,7 +1,7 @@
 .container1_banner_allpage {
-    height: 120px;
+    height: 80px;
     width: 100%;
-    margin-top: 97px;
+    margin-top: 92px;
     background-color: rgb(255, 255, 254);
     display: flex;
     justify-content: center;
@@ -28,11 +28,11 @@
     align-items: center;
     margin-top: 20px;
     height: fit-content;
-
 }
 
 
 .contact_card {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,10 +40,22 @@
     gap: 10px;
     width: 95%;
     height: fit-content;
-    padding: 30px 10px;
+    padding: 40px 10px;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.15);
+}
+
+.imageicon {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+.imageicon img {
+    height: 38px;
+    width: 38px;
+    border-radius: 50%;
 }
 
 .contact_image {
@@ -94,7 +106,7 @@
     border-radius: 10px;
     font-size: 15px;
     font-weight: bold;
-    
+
 }
 
 input[type="number"]::-webkit-outer-spin-button,
@@ -155,6 +167,101 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 /*  Contact page css end */
+
+
+
+/* contact message page start */
+.Whole_message_Div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+.contact-cancle {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    width: 70%;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+    transition: 2s all ease-in;
+    background-color: rgba(201, 171, 232, 0.9);
+}
+
+.cancle-hide-banner {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    cursor: pointer;
+}
+
+.cancle-hide-banner:hover {
+    color: rgb(0, 136, 255);
+}
+
+.container-contact-banner {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    max-height: 340px;
+    gap: 15px;
+    border-radius: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.container-contact-banner::-webkit-scrollbar {
+    width: 7px;
+}
+
+.container-contact-banner::-webkit-scrollbar-thumb {
+    background: #8224E3;
+    border-radius: 12px;
+}
+
+
+
+.contact-banner1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(255, 0, 0, 0.1);
+    word-wrap: normal;
+    flex-wrap: wrap;
+    padding: 10px;
+    box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.15);
+}
+
+.contact-banner1 p {
+    margin: 5px 0;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.contact-date {
+    display: flex;
+    justify-content: end;
+    width: 95%;
+    padding: 5px;
+}
+
+
+/* contact message page end */
+
+
 
 
 /*  Register page css start here */
