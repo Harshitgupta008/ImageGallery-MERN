@@ -1,0 +1,103 @@
+.postdiv_button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    margin-left: 25px;
+}
+
+.postdiv_button button {
+    height: 35px;
+    width: 100px;
+    padding: 5px;
+    background-color: transparent;
+    border: 1px solid #8224E3;
+    color: #8224E3;
+    border-radius: 10px;
+}
+
+.postdiv_button button:hover {
+    background-color: #8224E3;
+    color: white;
+    border-radius: 10px;
+}
+
+@media only screen and (max-width: 450px) {
+    .postdiv_button button:hover {
+        height: 20px;
+        width: 80px;
+        font-size: 10px;
+    }
+
+}
+
+.container_post {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    height: fit-content;
+    padding-bottom: 40px;
+}
+
+
+.post_card {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    width: 95%;
+    flex-direction: column;
+    height: fit-content;
+    padding: 30px 10px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.15);
+}
+
+
+.allImages_post {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    height: fit-content;
+}
+
+.imagecard_post {
+    height: fit-content;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    width: 250px;
+    border-radius: 15px;
+}
+
+.imagecard_post img {
+    height: 300px;
+    width: 250px;
+    border-radius: 15px;
+}
+
+@media only screen and (max-width: 850px) {
+    .imagecard_post {
+        width: 150px;
+    }
+
+    .imagecard_post img {
+        height: 200px;
+        width: 150px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .imagecard_post {
+        width: 100px;
+    }
+
+    .imagecard_post img {
+        height: 150px;
+        width: 100px;
+    }
+}

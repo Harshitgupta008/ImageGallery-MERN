@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
                 const data = await checkUser.json();
                 setAllmessage(data.msg);
             
-                console.log("data "+data.msg)  
+                // console.log("data "+data.msg)  
             }else{
                 console.log("token not found")
             }

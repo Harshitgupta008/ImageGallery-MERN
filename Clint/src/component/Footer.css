@@ -1,14 +1,24 @@
 .footer {
-    background-color: white;
-    color: #8224E3;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+  background-color: white;
+  color: #8224E3;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+.footer p {
+  margin: 0;
+}
+
+@media only screen and (max-width: 500px) {
+  .footer {
+    font-size: 10px;
   }
-  
-  .footer p {
-    margin: 0;
+}
+@media only screen and (max-width: 250px) {
+  .footer {
+    font-size: 8px;
   }
-  
+}
