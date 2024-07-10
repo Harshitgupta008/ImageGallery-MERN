@@ -21,16 +21,119 @@
     border-radius: 10px;
     box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.15);
 }
-.profile_backicon{
+
+.profile_backicon {
     width: 100%;
     margin-left: 10px;
     height: 40px;
     display: flex;
     align-items: center;
 }
-.profile_backicon img{
+
+.profile_backicon img {
     width: 35px;
     height: 35px;
     border-radius: 50%;
     cursor: pointer;
+}
+
+.profile-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    min-width: 400px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px auto;
+    background-color: #ffffff;
+    transition: transform 0.2s ease-in-out;
+}
+
+.profile-card:hover {
+    transform: translateY(-5px);
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 2px solid #ddd;
+}
+
+.profile-name {
+    font-size: 1.8em;
+    margin: 10px 0;
+    color: #333;
+    text-transform: capitalize;
+    width: 95%;
+}
+
+.profile-place,
+.profile-email,
+.profile-phone {
+    font-size: 1em;
+    color: #777;
+    margin: 5px 0;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+}
+
+.profile-card h3 {
+    width: 100px;
+    padding: 5px;
+    color: #232222;
+}
+
+.profile-card h5 {
+    width: 150px;
+    padding: 5px;
+}
+
+
+
+@media only screen and (max-width: 500px) {
+    .profile-card {
+        min-width: 350px;
+    }
+}
+
+@media only screen and (max-width: 430px) {
+    .profile-card {
+        min-width: 300px;
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width: 370px) {
+    .profile-card {
+        min-width: 250px;
+    }
+
+    .profile-place,
+    .profile-email,
+    .profile-phone {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+@media only screen and (max-width: 300px) {
+    .profile-card {
+        min-width: 200px;
+        font-size: 8px;
+    }
+
+    
 }

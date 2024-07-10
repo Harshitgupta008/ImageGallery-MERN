@@ -14,6 +14,9 @@ function About() {
     const SendHomepage = () => {
         return navigate("/")
     }
+    const ProfileRoute = ()=>{
+        return navigate("/profile")
+    }
     useEffect(() => {
         if (isLoggedin) {
             // console.log("welcome ")
@@ -45,7 +48,7 @@ function About() {
                                     <h4 className='h3aboutprofile'>{user.name}</h4>
                                     <div className='about_profilebutton'>
                                         <button >Edit Profile</button>
-                                        <button>Views Profile</button>
+                                        <button onClick={ProfileRoute}>Views Profile</button>
                                         
                                     </div>
                                 </div>
