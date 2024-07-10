@@ -7,6 +7,7 @@ import Contact from "../component/page/Contact.jsx"
 import ErrorPage from "../component/page/ErrorPage.jsx"
 import { Routes, Route } from "react-router-dom"
 import { Useauth } from "../Auth.jsx"
+import Profile from "../component/page/Userpage/Profile.jsx"
 function Routepage() {
     const { isLoggedin } = Useauth();
     return (
@@ -18,7 +19,10 @@ function Routepage() {
                 <Route path="/contact" element={<Contact />} />
                 {
                     isLoggedin ?
-                        <Route path="/logout" element={<Logout />} />
+                        <>
+                            <Route path="/logout" element={<Logout />} />
+                            <Route path="/profile" element={<Profile />} />
+                        </>
                         :
                         <>
                             <Route path="/login" element={<Login />} />

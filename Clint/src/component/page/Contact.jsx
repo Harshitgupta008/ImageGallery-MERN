@@ -2,10 +2,11 @@ import Linkdin from "../image/linkedin.png"
 import Github from "../image/github.png"
 import Instagram from "../image/instagram.png"
 import imageicon from "../image/imagesicon.jpg"
+import deleteicon from "../image/bin.png"
 import { useNavigate } from 'react-router-dom'
 import './Page.css'
 import { Useauth } from '../../Auth'
-import { useEffect, useState } from 'react'
+import {  useState } from 'react'
 function Contact() {
     const [contactData, setContactDate] = useState({
         name: "", number: "", email: "", message: "",
@@ -144,6 +145,9 @@ function Contact() {
                                                 return (
                                                     <>
                                                         <div className="contact-banner1" key={i}>
+                                                            <div className='contact_banner1_deleteicon'>
+                                                                <img src={deleteicon} alt="messages" />
+                                                            </div>
                                                             <h4>{ele.message}</h4>
                                                             <div className="contact-date">
                                                                 <p>{ele.date.slice(2, 10)}</p>

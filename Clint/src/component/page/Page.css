@@ -259,6 +259,26 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 
+.contact_banner1_deleteicon {
+    height: 35px;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+
+}
+
+.contact_banner1_deleteicon img {
+    height: 20px;
+    width: 20px;
+    transition: 0.5s all ease-in;
+}
+
+.contact_banner1_deleteicon img:hover {
+    transform: scale(1.2);
+}
+
+
+
 /* contact message page end */
 
 

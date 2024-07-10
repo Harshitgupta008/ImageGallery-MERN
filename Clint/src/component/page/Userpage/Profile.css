@@ -1,0 +1,36 @@
+.container_profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 95px;
+    height: fit-content;
+}
+
+
+.profile_card {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 95%;
+    height: fit-content;
+    padding: 40px 10px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.15);
+}
+.profile_backicon{
+    width: 100%;
+    margin-left: 10px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+.profile_backicon img{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+}

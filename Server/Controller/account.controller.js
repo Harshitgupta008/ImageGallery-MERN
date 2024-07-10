@@ -49,22 +49,28 @@ const LoginUser = async (req, res) => {
     }
     try {
         const checkUser = await User.findOne({ email });
-        const checkPassword = await bcrypt.compare(password, checkUser.password);
-        if (email && checkPassword) {
-            const payload = {
-                _id: checkUser._id,
-                name: checkUser.name,
-                email: checkUser.email,
-                number: checkUser.number,
-                place: checkUser.place
+        if (checkUser) {
+            const checkPassword = await bcrypt.compare(password, checkUser.password);
+            if (checkPassword) {
+
+                const payload = {
+                    _id: checkUser._id,
+                    name: checkUser.name,
+                    email: checkUser.email,
+                    number: checkUser.number,
+                    place: checkUser.place
+                }
+                const token = await checkUser.GenrateToken(payload);
+                return res.status(200).json({
+                    "message": "loginsuccessfully",
+                    "token": token,
+                })
+            } else {
+
+                return res.status(400).send("check detail ")
             }
-            const token = await checkUser.GenrateToken(payload);
-            return res.status(200).json({
-                "message": "loginsuccessfully",
-                "token": token,
-            })
         } else {
-            return res.status(400).send(" Check your email or passowrd ")
+            return res.status(400).send("user not found ")
         }
     } catch (error) {
         console.log(`error in login page :: ${error}`)
@@ -110,7 +116,7 @@ const GetAllmessage = async (req, res) => {
         const userData = await req.user;
         if (userData) {
             const allmessage = await userData.messages;
-            const msg = allmessage.map((ele) => ({ "message": ele.message, "name": ele.name, "date": ele.date }))
+            const msg = allmessage.map((ele) => ({ "message": ele.message, "name": ele.name, "date": ele.date, "id":ele._id }))
             return res.status(200).json({ msg });
         } else {
             return res.status(400).send("message not found")
@@ -122,6 +128,27 @@ const GetAllmessage = async (req, res) => {
 }
 
 
+// user message deleted by his choise
+const DeleteMessage = async (req, res) => {
+    try {
+        const userData = await req.user;
+        const messageId = req.params.id;
+
+        if (!userData) {
+            return res.status(400).json({ error: "User not found" });
+        }
+
+        userData.messages = userData.messages.filter(message => message._id.toString() !== messageId);
+        
+        await userData.save();
+        return res.status(200).json({ "message": "User message deleted" });
+
+    } catch (error) {
+
+        console.log(`error in  random deletemessage:: ${error}`)
+    }
+}
+
 //create image ruote and use cloudinary for use storage 
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
@@ -129,8 +156,8 @@ cloudinary.config({
     api_secret: process.env.API_SECREATE
 });
 const ImageUpload = async (req, res) => {
-    const {email} = req.body;
-    const {images} = req.file;
+    const { email } = req.body;
+    const { images } = req.file;
     if (!email || images) {
         return res.status(400).send("all field are mendaterry")
     }
@@ -164,7 +191,7 @@ const Getimages = async (req, res) => {
         const userData = await req.user;
         if (userData) {
             const allimages = await userData.images;
-            const msg = allimages.map((ele) => ({ "message": ele.image, "date": ele.date }))
+            const msg = allimages.map((ele) => ({ "message": ele.image, "date": ele.date, "id":ele._id }))
             return res.status(200).json({ msg });
         } else {
             return res.status(400).send("message not found")
@@ -175,4 +202,9 @@ const Getimages = async (req, res) => {
     }
 }
 
-export { RegisterUser, LoginUser, UserAuthentication, UserMessageSend, GetAllmessage, ImageUpload, Getimages};
+
+
+
+
+
+export { RegisterUser, LoginUser, UserAuthentication, UserMessageSend, GetAllmessage, ImageUpload, Getimages, DeleteMessage };
