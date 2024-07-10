@@ -116,7 +116,7 @@ const GetAllmessage = async (req, res) => {
         const userData = await req.user;
         if (userData) {
             const allmessage = await userData.messages;
-            const msg = allmessage.map((ele) => ({ "message": ele.message, "name": ele.name, "date": ele.date, "id":ele._id }))
+            const msg = allmessage.map((ele) => ({ "message": ele.message, "name": ele.name, "date": ele.date, "id": ele._id }))
             return res.status(200).json({ msg });
         } else {
             return res.status(400).send("message not found")
@@ -139,9 +139,9 @@ const DeleteMessage = async (req, res) => {
         }
 
         userData.messages = userData.messages.filter(message => message._id.toString() !== messageId);
-        
+
         await userData.save();
-        return res.status(200).json({ "message": "User message deleted" });
+        return res.status(200);
 
     } catch (error) {
 
@@ -191,7 +191,7 @@ const Getimages = async (req, res) => {
         const userData = await req.user;
         if (userData) {
             const allimages = await userData.images;
-            const msg = allimages.map((ele) => ({ "message": ele.image, "date": ele.date, "id":ele._id }))
+            const msg = allimages.map((ele) => ({ "message": ele.image, "date": ele.date, "id": ele._id }))
             return res.status(200).json({ msg });
         } else {
             return res.status(400).send("message not found")

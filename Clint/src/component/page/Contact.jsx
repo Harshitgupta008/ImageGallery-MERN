@@ -17,6 +17,7 @@ function Contact() {
     const [datacheck, setDatacheck] = useState(true);
     const { user } = Useauth();
     const { isLoggedin } = Useauth();
+    const { UserDeleteMessage } = Useauth();
 
     // get all message from here 
     const { allMessage } = Useauth();
@@ -56,7 +57,6 @@ function Contact() {
                 console.log("email are : " + email);
                 if (sendMessage.ok) {
                     window.alert("Message Sent Successfully");
-                    window.location.reload()
                     setContactDate({
                         name: user.name, number: user.number, email: user.email, message: "",
                     })
@@ -146,7 +146,7 @@ function Contact() {
                                                     <>
                                                         <div className="contact-banner1" key={i}>
                                                             <div className='contact_banner1_deleteicon'>
-                                                                <img src={deleteicon} alt="messages" />
+                                                                <img onClick={()=>UserDeleteMessage(ele.id)} src={deleteicon} alt="messages" />
                                                             </div>
                                                             <h4>{ele.message}</h4>
                                                             <div className="contact-date">
