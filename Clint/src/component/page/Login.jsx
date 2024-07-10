@@ -36,6 +36,7 @@ function Login() {
                 // console.log(userToken.token)
                 window.alert(`login Successfluly`)
                 navigate("/home")
+                window.location.reload();
             } else if (logingData.status === 400) {
                 window.alert(`User not found`);
             } else {

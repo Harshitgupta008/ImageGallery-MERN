@@ -2,6 +2,7 @@ import User from "../Modles/account.modles.js";
 import bcrypt from "bcrypt";
 import { v2 as cloudinary } from 'cloudinary';
 import dotenv from "dotenv";
+import fs from 'fs'
 
 dotenv.config();
 
@@ -156,14 +157,10 @@ cloudinary.config({
     api_secret: process.env.API_SECREATE
 });
 const ImageUpload = async (req, res) => {
-    const { email } = req.body;
-    const { images } = req.file;
-    if (!email || images) {
-        return res.status(400).send("all field are mendaterry")
-    }
     try {
-        const findUser = await User.findOne({ email });
-        if (findUser) {
+        const userData = await req.user;
+        if (userData) {
+            
             const uploadResult = await cloudinary.uploader.upload(req.file.path).catch((error) => { console.log(error) });
             console.log("cloud " + uploadResult.secure_url);
 
@@ -174,7 +171,7 @@ const ImageUpload = async (req, res) => {
                     console.log("delete file")
                 }
             })
-            await findUser.CollectImages(uploadResult.secure_url);
+            await userData.CollectImages(uploadResult.secure_url);
             return res.status(200).send(" image  send successfully");
         } else {
             return res.status(400).send(" User not found ");
@@ -191,7 +188,7 @@ const Getimages = async (req, res) => {
         const userData = await req.user;
         if (userData) {
             const allimages = await userData.images;
-            const msg = allimages.map((ele) => ({ "message": ele.image, "date": ele.date, "id": ele._id }))
+            const msg = allimages.map((ele) => ({ "image": ele.image, "date": ele.date, "id": ele._id }))
             return res.status(200).json({ msg });
         } else {
             return res.status(400).send("message not found")

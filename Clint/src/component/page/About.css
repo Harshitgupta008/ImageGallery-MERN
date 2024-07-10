@@ -31,6 +31,7 @@
     min-height: 200px;
     min-width: 170px;
 }
+
 .profile_imagecard_about2 {
     display: flex;
     flex-direction: column;
@@ -112,7 +113,8 @@
         height: 20px;
         width: 20px;
     }
-    .plusicon_about:hover{
+
+    .plusicon_about:hover {
         background-color: #8224E3;
     }
 
@@ -121,27 +123,107 @@
         width: 90px;
         font-size: 10px;
     }
-    .h3aboutprofile{
+
+    .h3aboutprofile {
         font-size: 10px;
     }
-    .profile_imagecard_about2{
-        
+
+    .profile_imagecard_about2 {
+
         width: fit-content;
         padding: 5px;
         min-height: 100px;
     }
-    .about_postcard{
+
+    .about_postcard {
         font-size: 13px;
     }
-    .about_card{
+
+    .about_card {
         gap: 5px;
 
     }
 }
+
 @media only screen and (max-width: 400px) {
-    .about_card{
+    .about_card {
         display: flex;
         flex-wrap: wrap;
         gap: 0;
     }
+}
+
+/* imagebanner upload */
+.aboutImage_container {
+    position: absolute;
+    width: 70%;
+    margin: 120px 10px 10px 10px;
+    height: fit-content;
+    
+}
+.image_bannerdetail{
+    height: 150px;
+    width: 150px;
+    background-color: white;
+}
+.note_imagebanner{
+    color: red;
+    margin-top: 10px;
+}
+
+.about_imagebanner {
+    position: relative;
+    height: 55vh;
+    margin: 10px;
+    background-color: white;
+    box-shadow: 0px 20px 30px rgba(20, 76, 246, 0.39);
+    border-radius: 10px;
+    border: 4px solid #8224E3;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 15px 0;
+
+}
+
+.about_canclebaner {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+.form_imagebanner{
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+    width: 90%;
+}
+.form_imagebanner input{
+    display: none;
+}
+.form_imagebanner label{
+    border: 2px solid #222123;
+    height: 90px;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(96, 103, 111, 0.4)
+    
+}
+.form_imagebanner button {
+    height: 35px;
+    width: 100px;
+    padding: 5px;
+    background-color: transparent;
+    border: 1px solid #8224E3;
+    color: #8224E3;
+    border-radius: 10px;
 }

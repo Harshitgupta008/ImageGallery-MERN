@@ -6,6 +6,7 @@ export const AuthProvider = ({ children }) => {
     const [token, setToken] = useState(localStorage.getItem("token"));
     const [user, setUser] = useState("");
     const [allMessage, setAllmessage] = useState([])
+    const [allImages, setAllImages] = useState([])
     const isLoggedin = !!token;
 
     // genrate tokne in localStorage from login page
@@ -19,6 +20,26 @@ export const AuthProvider = ({ children }) => {
         setToken("");
         return localStorage.removeItem("token")
     }
+    // get user contact form
+    const UserAuth = async () => {
+        try {
+            const checkUser = await fetch("/api/UserAuth", {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            if (checkUser.status === 200) {
+                const data = await checkUser.json();
+                setUser(data.userData);
+                // console.log("data "+data.userData)  
+            } else {
+                console.log("token not found")
+            }
+        } catch (error) {
+            console.log(`error in Userfetching in contact form :: ${error}`)
+        }
+    }
 
     // get all messages in contact page
     const UserMessages = async () => {
@@ -31,7 +52,7 @@ export const AuthProvider = ({ children }) => {
             });
             if (checkUser.status === 200) {
                 const data = await checkUser.json();
-                setAllmessage(data.msg); 
+                setAllmessage(data.msg);
             } else {
                 console.log("token not found")
             }
@@ -63,10 +84,10 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
-    // get user contact form
-    const UserAuth = async () => {
+    // get all messages in contact page
+    const UserImages = async () => {
         try {
-            const checkUser = await fetch("/api/UserAuth", {
+            const checkUser = await fetch("/api/Getimages", {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -74,22 +95,23 @@ export const AuthProvider = ({ children }) => {
             });
             if (checkUser.status === 200) {
                 const data = await checkUser.json();
-                setUser(data.userData);
-                // console.log("data "+data.userData)  
+                setAllImages(data.msg);
             } else {
                 console.log("token not found")
             }
         } catch (error) {
-            console.log(`error in Userfetching in contact form :: ${error}`)
+            console.log(`error in message get  :: ${error}`)
         }
     }
+
 
     useEffect(() => {
         UserAuth();
         UserMessages();
-    }, [allMessage]);
+        UserImages();
+    }, [allMessage, allImages, token]);
 
-    return <AuthContext.Provider value={{ GenrateToken, LogoutUser, isLoggedin, user, allMessage, UserDeleteMessage }}>
+    return <AuthContext.Provider value={{ GenrateToken, LogoutUser, isLoggedin, user, allMessage, UserDeleteMessage, token, allImages }}>
         {children}
     </AuthContext.Provider>
 }

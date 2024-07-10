@@ -1,21 +1,29 @@
 import './Page.css'
 import './About.css'
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import defaultimage from "../image/defaultDpimage.png"
 import plusicon from "../image/addPlusimage.jpg"
 import { Useauth } from "../../Auth"
 import Post from './Userpage/Post';
+import ImageUpload from './ImageUpload.jsx';
 function About() {
     const { isLoggedin } = Useauth();
     const navigate = useNavigate();
     const { user } = Useauth();
+    
+
+    const [imagepage, setImagepage] = useState(false);
 
     const SendHomepage = () => {
         return navigate("/")
     }
-    const ProfileRoute = ()=>{
+    const ProfileRoute = () => {
         return navigate("/profile")
+    }
+
+    const ShowImage_Page = () => {
+        setImagepage(true);
     }
     useEffect(() => {
         if (isLoggedin) {
@@ -24,7 +32,7 @@ function About() {
             window.alert("You can not see About page without login")
             return navigate("/login")
         }
-    }, [isLoggedin, navigate])
+    }, [isLoggedin, navigate, imagepage])
 
 
 
@@ -49,7 +57,7 @@ function About() {
                                     <div className='about_profilebutton'>
                                         <button >Edit Profile</button>
                                         <button onClick={ProfileRoute}>Views Profile</button>
-                                        
+
                                     </div>
                                 </div>
                                 <div className='profile_imagecard_about2'>
@@ -60,6 +68,17 @@ function About() {
                                 </div>
 
                             </div>
+                            {
+                                !imagepage ?
+                                    <></>
+                                    :
+                                    <ImageUpload imageposition={setImagepage} />
+                            }
+
+                        </div>
+
+                        <div className="postdiv_button">
+                            <button onClick={ShowImage_Page}><b>+</b> New Post</button>
                         </div>
                         <Post />
                     </>
