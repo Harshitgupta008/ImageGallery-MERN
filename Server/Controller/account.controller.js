@@ -200,8 +200,40 @@ const Getimages = async (req, res) => {
 }
 
 
+const DeleteImages = async (req, res) => {
+    try {
+        const userData = req.user;
+        const imageId = req.params.id;
+        const { imageURL } = req.body;
+
+        if (!userData) {
+            return res.status(400).json({ error: "User not found" });
+        }
+
+        if (!imageURL) {
+            return res.status(400).json({ error: "Image URL not provided" });
+        }
+
+        const imageName = imageURL.split('/').pop().split('.')[0];
+
+        const result = await cloudinary.uploader.destroy(imageName);
+
+        if (result.result !== 'ok') {
+            console.error("Error in Cloudinary delete: ", result);
+            return res.status(400).json({ error: "Failed to delete image from Cloudinary" });
+        }
+
+        userData.images = userData.images.filter(image => image._id.toString() !== imageId);
+
+        await userData.save();
+        return res.status(200).send("Image deleted successfully");
+
+    } catch (error) {
+        console.error(`Error in deleteImage controller: ${error}`);
+        return res.status(400).json({ error: "An error occurred while deleting the image" });
+    }
+};
 
 
 
-
-export { RegisterUser, LoginUser, UserAuthentication, UserMessageSend, GetAllmessage, ImageUpload, Getimages, DeleteMessage };
+export { RegisterUser, LoginUser, UserAuthentication, UserMessageSend, GetAllmessage, ImageUpload, Getimages, DeleteMessage, DeleteImages };

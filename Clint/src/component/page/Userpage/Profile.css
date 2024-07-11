@@ -99,8 +99,6 @@
     padding: 5px;
 }
 
-
-
 @media only screen and (max-width: 500px) {
     .profile-card {
         min-width: 350px;
@@ -129,11 +127,12 @@
         gap: 5px;
     }
 }
+
 @media only screen and (max-width: 300px) {
     .profile-card {
         min-width: 200px;
         font-size: 8px;
     }
 
-    
+
 }

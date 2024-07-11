@@ -67,9 +67,12 @@
 
 .imagecard_post {
     height: fit-content;
-    padding: 5px;
+    padding: 10px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
     width: 250px;
     border-radius: 15px;
 }
@@ -78,6 +81,17 @@
     height: 250px;
     width: 200px;
     border-radius: 15px;
+}
+
+.post_button {
+    height: 35px;
+    width: 100px;
+    padding: 5px;
+    background-color: white;
+    border: 1px solid #8224E3;
+    color: #8224E3;
+    border-radius: 10px;
+
 }
 
 @media only screen and (max-width: 850px) {

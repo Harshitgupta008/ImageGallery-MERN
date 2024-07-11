@@ -65,13 +65,14 @@ export const AuthProvider = ({ children }) => {
     // delete messagees from contact form
     const UserDeleteMessage = async (id) => {
         try {
-            const checkUser = await fetch(`/api/checkmessage/${id}`, {
+            const checkUser = await fetch(`/api/Deletemessage/${id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`,
                     headers: {
                         "Content-Type": "application/json"
-                    }
+                    },
+
                 },
             });
             if (checkUser.status === 200) {
@@ -84,7 +85,7 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
-    // get all messages in contact page
+    // get all images in post page
     const UserImages = async () => {
         try {
             const checkUser = await fetch("/api/Getimages", {
@@ -104,6 +105,29 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
+    // delete image from user in post page
+    const UserDeleteImages = async (id, image) => {
+        try {
+            const checkUser = await fetch(`/api/Deleteimages/${id}`, {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+
+                    "Content-Type": "application/json"
+
+                },
+                body: JSON.stringify({ imageURL: image })
+            });
+            if (checkUser.status === 200) {
+                // console.log("checkUser "+data.msg)  
+            } else {
+                console.log("token not found")
+            }
+        } catch (error) {
+            console.log(`error in message get  :: ${error}`)
+        }
+    }
+
 
     useEffect(() => {
         UserAuth();
@@ -111,7 +135,7 @@ export const AuthProvider = ({ children }) => {
         UserImages();
     }, [allMessage, allImages, token]);
 
-    return <AuthContext.Provider value={{ GenrateToken, LogoutUser, isLoggedin, user, allMessage, UserDeleteMessage, token, allImages }}>
+    return <AuthContext.Provider value={{ GenrateToken, LogoutUser, isLoggedin, user, allMessage, UserDeleteMessage, token, allImages, UserDeleteImages }}>
         {children}
     </AuthContext.Provider>
 }

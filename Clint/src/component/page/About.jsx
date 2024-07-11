@@ -11,6 +11,7 @@ function About() {
     const { isLoggedin } = Useauth();
     const navigate = useNavigate();
     const { user } = Useauth();
+    const { allImages } = Useauth();
     
 
     const [imagepage, setImagepage] = useState(false);
@@ -63,7 +64,7 @@ function About() {
                                 <div className='profile_imagecard_about2'>
                                     <div className='about_postcard'>
                                         <h2>Post</h2>
-                                        <h2>0</h2>
+                                        <h2>{allImages.length}</h2>
                                     </div>
                                 </div>
 
