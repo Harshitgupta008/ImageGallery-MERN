@@ -34,8 +34,8 @@ function Home() {
                     </div>
                     :
                     <div style={{ height: "60vh", width: "100%", display: "flex", justifyContent: "center", alignItems: "center", gap: "20px", flexDirection: "column" }}>
-                        <h3>Login and enjoy image gallery</h3>
-                        <h1>Owner - Harshit gupta</h1>
+                        <h1>Login and enjoy image gallery</h1>
+                        <h3 style={{color: "red"}}>Owner - Harshit gupta</h3>
                     </div>
             }
         </>
