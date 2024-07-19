@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Useauth } from "../../Auth";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 const ImageUpload = ({ imageposition }) => {
     const [imgfile, setImgfile] = useState(null);
     const [backgroundChange, setBackgroundChange] = useState({ backgroundColor: "white", color: "#8224E3" })
@@ -15,7 +17,8 @@ const ImageUpload = ({ imageposition }) => {
         const formData = new FormData();
         formData.append('image', imgfile);
         try {
-
+            
+            toast.info("Processing.......")
             const send = await fetch('/api/imageUpload', {
                 method: 'POST',
                 headers: {
@@ -23,11 +26,12 @@ const ImageUpload = ({ imageposition }) => {
                 },
                 body: formData,
             });
+            
             if (send.status === 200) {
-                window.alert("file uploaded")
+                toast.success("file uploaded Successfully")
                 setImgfile("");
             } else {
-                window.alert("some problem file not uploaded")
+                toast.error("some problem file not uploaded")
             }
         } catch (error) {
             console.log("find error :: " + error)

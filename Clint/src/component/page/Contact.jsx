@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom'
 import './Page.css'
 import { Useauth } from '../../Auth'
 import {  useState } from 'react'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Contact() {
     const [contactData, setContactDate] = useState({
         name: "", number: "", email: "", message: "",
@@ -42,7 +44,7 @@ function Contact() {
 
             const { name, email, message } = contactData;
             if (!message) {
-                return window.alert("fill your message")
+                return toast.warn("fill your message")
             }
             try {
                 const sendMessage = await fetch("/api/MessageSend", {
@@ -56,21 +58,26 @@ function Contact() {
                 });
                 console.log("email are : " + email);
                 if (sendMessage.ok) {
-                    window.alert("Message Sent Successfully");
+                    toast.success("Message Sent Successfully");
                     setContactDate({
                         name: user.name, number: user.number, email: user.email, message: "",
                     })
                 } else if (sendMessage.status === 400) {
-                    window.alert("user not found")
+                    toast("user not found")
                 } else {
-                    window.alert(`something erro in fetching problem`);
+                    toast(`something erro in fetching problem`);
                 }
             } catch (error) {
                 window.alert(`something erro in fetching problem::Message`);
             }
         } else {
-            window.alert("please create your account first")
+            toast.error("please create your account first")
         }
+    }
+
+    const DeleteMessage = (id)=>{
+        UserDeleteMessage(id);
+        toast.success("Message Deleted ")
     }
 
     const SendHomepage = () => {
@@ -146,7 +153,7 @@ function Contact() {
                                                     <>
                                                         <div className="contact-banner1" key={i}>
                                                             <div className='contact_banner1_deleteicon'>
-                                                                <img onClick={()=>UserDeleteMessage(ele.id)} src={deleteicon} alt="messages" />
+                                                                <img onClick={()=>DeleteMessage(ele.id)} src={deleteicon} alt="messages" />
                                                             </div>
                                                             <h4>{ele.message}</h4>
                                                             <div className="contact-date">

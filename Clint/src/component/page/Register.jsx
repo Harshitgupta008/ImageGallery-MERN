@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Register() {
     const navigate = useNavigate();
     const [user, setUser] = useState({
@@ -16,10 +17,10 @@ function Register() {
         e.preventDefault();
         const { name, email, number, place, password, cpassword } = user;
         if (!name || !email || !number || !place || !password || !cpassword) {
-            return window.alert("All field are mendatry");
+            return toast.warn("All field are mendatry");
         }
         if (password !== cpassword) {
-            window.alert("Password mismatch");
+            toast.error("Password mismatch");
         }
         try {
             const sendData = await fetch("/api/register", {
@@ -32,10 +33,10 @@ function Register() {
                 })
             });
             if (sendData.status === 200) {
-                window.alert(`Registeration Successfluly`)
+                toast.success(`Registeration Successfluly`)
                 navigate("/login")
             } else if (sendData.status === 400) {
-                window.alert(`data already exist`);
+                toast.warn(`data already exist`);
             } else {
                 window.alert(`something erro in fetching problem`);
 

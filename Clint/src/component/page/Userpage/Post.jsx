@@ -1,6 +1,8 @@
 import "./Post.css"
 import { Useauth } from "../../../Auth";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 function Post() {
     const { allImages } = Useauth();
     const { UserDeleteImages } = Useauth();
@@ -18,8 +20,11 @@ function Post() {
             [id]: { backgroundColor: "white", color: "#8224E3" },
         }));
     };
+    const DeleteImage = (id,img)=>{
+        UserDeleteImages(id,img);
+        toast.success("Image Deleted")
+    }
     useEffect(()=>{
-        UserDeleteImages();
     },[allImages])
     return (
         <>
@@ -37,7 +42,7 @@ function Post() {
                                         <div key={i} className="imagecard_post">
                                             <img src={ele.image} alt="user_post" />
                                             <button onMouseDown={() => handleMouseDown(ele.id)} onMouseUp={() => handleMouseUp(ele.id)} 
-                                            style={backgroundChange[ele.id]} onClick={() => UserDeleteImages(ele.id, ele.image)} className="post_button">Delete Post</button>
+                                            style={backgroundChange[ele.id]} onClick={() => DeleteImage(ele.id, ele.image)} className="post_button">Delete Post</button>
                                         </div>
                                     </>
                                 )

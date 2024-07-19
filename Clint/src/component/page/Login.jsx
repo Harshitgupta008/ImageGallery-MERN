@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import '../Navbar.css'
 import { useNavigate } from 'react-router-dom';
 import { Useauth } from '../../Auth';
-
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Login() {
     const { GenrateToken } = Useauth();
     const [email, setEmail] = useState("");
@@ -38,13 +38,13 @@ function Login() {
                 navigate("/home")
                 window.location.reload();
             } else if (logingData.status === 400) {
-                window.alert(`User not found`);
+                toast.error(`User not found`);
             } else {
-                window.alert(`something erro in fetching problem`);
+                toast.error(`something erro in fetching problem`);
 
             }
         } catch (error) {
-            window.alert(`something erro in fetching problem`);
+            toast.error(`something erro in fetching problem`);
         }
     }
 
