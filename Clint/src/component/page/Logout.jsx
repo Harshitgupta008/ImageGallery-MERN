@@ -33,7 +33,7 @@ function Logout() {
             </div>
             <div style={{ height: "60vh", width: "100%", display: "flex", justifyContent: "center", alignItems: "center", gap: "20px", flexDirection: "column" }}>
                 <h2>Thanks for use this, See you later</h2>
-                <button onClick={RemoveToken}>
+                <button onClick={RemoveToken} style={{cursor:'pointer'}}>
                     Logout 😣
                 </button>
             </div>

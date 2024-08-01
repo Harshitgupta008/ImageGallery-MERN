@@ -91,7 +91,7 @@
     border: 1px solid #8224E3;
     color: #8224E3;
     border-radius: 10px;
-
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 850px) {

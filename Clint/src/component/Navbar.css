@@ -6,6 +6,7 @@ body {
     position: relative;
     background-color: #F0F4F7;
     font-family: "Poppins",sans-serif;
+    overflow-x: hidden;
 }
 html {
     scroll-behavior: smooth;
