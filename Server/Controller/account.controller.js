@@ -142,7 +142,7 @@ const DeleteMessage = async (req, res) => {
         userData.messages = userData.messages.filter(message => message._id.toString() !== messageId);
 
         await userData.save();
-        return res.status(200);
+        return res.status(200).send("data deleted");
 
     } catch (error) {
 

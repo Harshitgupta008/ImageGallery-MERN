@@ -11,10 +11,10 @@ function About() {
     const { isLoggedin } = Useauth();
     const navigate = useNavigate();
     const { user } = Useauth();
-    const { allImages } = Useauth();
-    
+    const { token } = Useauth();
 
     const [imagepage, setImagepage] = useState(false);
+    const [allImages, setAllImages] = useState([]);
 
     const SendHomepage = () => {
         return navigate("/")
@@ -26,14 +26,32 @@ function About() {
     const ShowImage_Page = () => {
         setImagepage(true);
     }
+    const UserImages = async () => {
+        try {
+            const checkUser = await fetch("/api/Getimages", {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            if (checkUser.status === 200) {
+                const data = await checkUser.json();
+                setAllImages(data.msg);
+            } else {
+                console.log("token not found")
+            }
+        } catch (error) {
+            console.log(`error in message get  :: ${error}`)
+        }
+    }
     useEffect(() => {
         if (isLoggedin) {
-            // console.log("welcome ")
+            UserImages();
         } else {
             window.alert("You can not see About page without login")
             return navigate("/login")
         }
-    }, [isLoggedin, navigate, imagepage])
+    }, [isLoggedin, navigate, imagepage,allImages])
 
 
 

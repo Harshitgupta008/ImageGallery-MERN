@@ -6,7 +6,7 @@ import deleteicon from "../image/bin.png"
 import { useNavigate } from 'react-router-dom'
 import './Page.css'
 import { Useauth } from '../../Auth'
-import {  useState } from 'react'
+import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 function Contact() {
@@ -19,10 +19,10 @@ function Contact() {
     const [datacheck, setDatacheck] = useState(true);
     const { user } = Useauth();
     const { isLoggedin } = Useauth();
-    const { UserDeleteMessage } = Useauth();
+    const { token } = Useauth();
 
     // get all message from here 
-    const { allMessage } = Useauth();
+    const [allMessage, setAllMessage] = useState([]);
     const inputHandler = (e) => {
         const { name, value } = e.target;
         setContactDate({ ...contactData, [name]: value });
@@ -56,7 +56,7 @@ function Contact() {
                         name, email, message
                     })
                 });
-                console.log("email are : " + email);
+                // console.log("email are : " + email);
                 if (sendMessage.ok) {
                     toast.success("Message Sent Successfully");
                     setContactDate({
@@ -74,10 +74,47 @@ function Contact() {
             toast.error("please create your account first")
         }
     }
+    // get all messages in contact page
+    const UserMessages = async () => {
+        try {
+            const checkUser = await fetch("/api/getallMessage", {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            if (checkUser.status === 200) {
+                const data = await checkUser.json();
+                setAllMessage(data.msg);
+            } else {
+                console.log("token not found")
+            }
+        } catch (error) {
+            console.log(`error in message get  :: ${error}`)
+        }
+    }
 
-    const DeleteMessage = (id)=>{
-        UserDeleteMessage(id);
-        toast.success("Message Deleted ")
+
+    // delete messagees from contact form
+    const DeleteMessage = async (id) => {
+        try {
+            const checkUser = await fetch(`/api/Deletemessage/${id}`, {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                
+                },
+            });
+            if (checkUser.ok) {
+                toast.success("Message Deleted ") 
+            } else {
+                toast.error("Message not found ") 
+            }
+        } catch (error) {
+            console.log(`error in message get  :: ${error}`)
+        }
+
+        
     }
 
     const SendHomepage = () => {
@@ -90,6 +127,9 @@ function Contact() {
     const OpenMessageCard = () => {
         setMessageCard({ display: "flex" })
     }
+    useEffect(()=>{
+        UserMessages();
+    },[allMessage])
     return (
         <>
             <div className='container1_banner_allpage'>
@@ -153,7 +193,7 @@ function Contact() {
                                                     <>
                                                         <div className="contact-banner1" key={i}>
                                                             <div className='contact_banner1_deleteicon'>
-                                                                <img onClick={()=>DeleteMessage(ele.id)} src={deleteicon} alt="messages" />
+                                                                <img onClick={() => DeleteMessage(ele.id)} src={deleteicon} alt="messages" />
                                                             </div>
                                                             <h4>{ele.message}</h4>
                                                             <div className="contact-date">

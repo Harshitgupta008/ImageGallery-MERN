@@ -1,5 +1,4 @@
 import '../Navbar.css'
-import { useEffect } from "react"
 import { useNavigate } from 'react-router-dom';
 import { Useauth } from '../../Auth';
 import './Page.css'
@@ -19,9 +18,6 @@ function Logout() {
 
     }
 
-    useEffect(() => {
-
-    }, [LogoutUser])
 
 
     return (

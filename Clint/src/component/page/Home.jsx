@@ -1,13 +1,32 @@
 import './Page.css'
 import "./Userpage/Post.css";
 import { Useauth } from "../../Auth";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 function Home() {
-    const { allImages } = Useauth();
+    const { token } = Useauth();
     const { isLoggedin } = Useauth();
+    const [allImages, setAllImages] = useState([])
+    const UserImages = async () => {
+        try {
+            const checkUser = await fetch("/api/Getimages", {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            if (checkUser.status === 200) {
+                const data = await checkUser.json();
+                setAllImages(data.msg);
+            } else {
+                console.log("token not found")
+            }
+        } catch (error) {
+            console.log(`error in message get  :: ${error}`)
+        }
+    }
     useEffect(() => {
-
-    }, [isLoggedin])
+        UserImages();
+    }, [isLoggedin,allImages])
     return (
         <>
             <div className='container1_banner_allpage'>
