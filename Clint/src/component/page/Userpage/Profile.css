@@ -136,3 +136,73 @@
 
 
 }
+
+/* EditProfile css start */
+.image_editprofile_container{
+    cursor: pointer;
+}
+.editprofile_container{
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+.editform{
+    width: 500px;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-direction: column;   
+}
+.input_form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.input_form label{
+    color: #8224E3;
+    padding: 5px 10px;
+}
+.editform input{
+    all: unset;
+    border: 2px solid rgb(157, 157, 157);
+    border-radius: 30px;
+    padding: 10px 15px;
+    width: 100%;
+}
+.input_form_but {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input_form_but button{
+    width: fit-content;
+    height: fit-content;
+    padding: 15px 70px;
+    cursor: pointer;
+}
+.input_form_but button:active{
+    background-color: #570f9e;
+}
+@media only screen and (max-width: 650px) {
+    .editform{
+        width: 400px;
+    }
+}
+@media only screen and (max-width: 550px) {
+    .editform{
+        width: 300px;
+    }
+}
+@media only screen and (max-width: 450px) {
+    .editform{
+        width: fit-content;
+    }
+}

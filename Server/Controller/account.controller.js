@@ -112,6 +112,20 @@ const UserAuthentication = async (req, res) => {
     }
 }
 
+const UpdateUser = async (req, res) => {
+    try {
+        const { name, email, place, number } = req.body;
+        if (!name || !email || !place || !number) {
+            return res.send("all field are mendetory");
+        }
+        await User.findOneAndUpdate({ email },{ name, place, number }, { new: true })
+        return res.status(200).send("update data");
+    } catch (error) {
+        console.log(`error in UpdateUser page :: ${error}`)
+
+    }
+}
+
 const GetAllmessage = async (req, res) => {
     try {
         const userData = await req.user;
@@ -160,7 +174,7 @@ const ImageUpload = async (req, res) => {
     try {
         const userData = await req.user;
         if (userData) {
-            
+
             const uploadResult = await cloudinary.uploader.upload(req.file.path).catch((error) => { console.log(error) });
             console.log("cloud " + uploadResult.secure_url);
 
@@ -236,4 +250,4 @@ const DeleteImages = async (req, res) => {
 
 
 
-export { RegisterUser, LoginUser, UserAuthentication, UserMessageSend, GetAllmessage, ImageUpload, Getimages, DeleteMessage, DeleteImages };
+export { RegisterUser, LoginUser, UserAuthentication, UpdateUser, UserMessageSend, GetAllmessage, ImageUpload, Getimages, DeleteMessage, DeleteImages };

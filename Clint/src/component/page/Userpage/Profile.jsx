@@ -7,7 +7,7 @@ function Profile() {
     const nevigate = useNavigate();
     const { user } = Useauth();
     const BackRout = () => {
-        nevigate(-1);
+        return nevigate("/about")
     }
     return (
         <>

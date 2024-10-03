@@ -22,6 +22,9 @@ function About() {
     const ProfileRoute = () => {
         return navigate("/profile")
     }
+    const EditProfile = () => {
+        return navigate("/editprofile")
+    }
 
     const ShowImage_Page = () => {
         setImagepage(true);
@@ -74,7 +77,7 @@ function About() {
                                     </div>
                                     <h4 className='h3aboutprofile'>{user.name}</h4>
                                     <div className='about_profilebutton'>
-                                        <button >Edit Profile</button>
+                                        <button onClick={EditProfile} >Edit Profile</button>
                                         <button onClick={ProfileRoute}>Views Profile</button>
 
                                     </div>

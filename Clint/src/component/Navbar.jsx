@@ -1,5 +1,5 @@
 import './Navbar.css';
-import { Link } from 'react-router-dom';
+import {  NavLink } from 'react-router-dom';
 import { Useauth } from '../Auth';
 import { useEffect, useState } from 'react';
 import imagelogo from "./image/imagelogo.png"
@@ -23,16 +23,16 @@ const Navbar = () => {
                 <div className="logoimageGalerry"><a href="https://www.instagram.com/harshit__7548/"><img src={imagelogo} alt="ImageGallery" /></a></div>
             </div>
             <div className="container-navcard unhide">
-                <div><Link className="nav-link" to={"/home"}>Home</Link></div>
-                <div><Link className="nav-link" to={"/about"}>About</Link></div>
-                <div><Link className="nav-link" to={"/contact"}>Contact</Link></div>
+                <div><NavLink className="nav-link" to={"/home"}>Home</NavLink></div>
+                <div><NavLink className="nav-link" to={"/about"}>About</NavLink></div>
+                <div><NavLink className="nav-link" to={"/contact"}>Contact</NavLink></div>
                 {
                     isLoggedin ?
-                        <div><Link className="nav-link" to={"/logout"}>Logout</Link></div>
+                        <div><NavLink className="nav-link" to={"/logout"}>Logout</NavLink></div>
                         :
                         <>
-                            <div><Link className="nav-link" to={"/Register"}>Register</Link></div>
-                            <div><Link className="nav-link" to={"/login"}>Login</Link></div>
+                            <div><NavLink className="nav-link" to={"/Register"}>Register</NavLink></div>
+                            <div><NavLink className="nav-link" to={"/login"}>Login</NavLink></div>
                         </>
                 }
             </div>
@@ -45,16 +45,16 @@ const Navbar = () => {
             </div>
             <div className="container-navcard-hide" style={performslider}>
                 <h3 className="cancle-hide" onClick={Closeslide}>&#x2715;</h3>
-                <div className="hide-nav-link"><Link className="nav-link" to={"/home"}>Home</Link></div>
-                <div className="hide-nav-link"><Link className="nav-link" to={"/about"}>About</Link></div>
-                <div className="hide-nav-link"><Link className="nav-link" to={"/contact"}>Contact</Link></div>
+                <div className="hide-nav-link"><NavLink className="nav-link" to={"/home"}>Home</NavLink></div>
+                <div className="hide-nav-link"><NavLink className="nav-link" to={"/about"}>About</NavLink></div>
+                <div className="hide-nav-link"><NavLink className="nav-link" to={"/contact"}>Contact</NavLink></div>
                 {
                     isLoggedin ?
-                        <div className="hide-nav-link"><Link className="nav-link" to={"/logout"}>Logout</Link></div>
+                        <div className="hide-nav-link"><NavLink className="nav-link" to={"/logout"}>Logout</NavLink></div>
                         :
                         <>
-                            <div className="hide-nav-link"><Link className="nav-link" to={"/Register"}>Register</Link></div>
-                            <div className="hide-nav-link"><Link className="nav-link" to={"/login"}>Login</Link></div>
+                            <div className="hide-nav-link"><NavLink className="nav-link" to={"/Register"}>Register</NavLink></div>
+                            <div className="hide-nav-link"><NavLink className="nav-link" to={"/login"}>Login</NavLink></div>
                         </>
                 }
             </div>

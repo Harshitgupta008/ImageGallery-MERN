@@ -8,6 +8,7 @@ import ErrorPage from "../component/page/ErrorPage.jsx"
 import { Routes, Route } from "react-router-dom"
 import { Useauth } from "../Auth.jsx"
 import Profile from "../component/page/Userpage/Profile.jsx"
+import EditProfile from "../component/page/Userpage/EditProfile.jsx"
 function Routepage() {
     const { isLoggedin } = Useauth();
     return (
@@ -22,6 +23,7 @@ function Routepage() {
                         <>
                             <Route path="/logout" element={<Logout />} />
                             <Route path="/profile" element={<Profile />} />
+                            <Route path="/editprofile" element={<EditProfile />} />
                         </>
                         :
                         <>
