@@ -70,7 +70,7 @@ function About() {
                                 <div className='profile_imagecard_about'>
                                     <div className="about_defaultimage">
                                         <img src={defaultimage} alt="" className='profileimage_about' />
-                                        <img src={plusicon} alt="" className='plusicon_about' />
+                                        <img src={plusicon} alt="" className='plusicon_about' style={{cursor:'pointer'}} />
                                     </div>
                                     <h4 className='h3aboutprofile'>{user.name}</h4>
                                     <div className='about_profilebutton'>

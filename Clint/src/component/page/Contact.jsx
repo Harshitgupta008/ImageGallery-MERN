@@ -146,7 +146,7 @@ function Contact() {
                     <div className='contact_image'>
                         <a href="https://www.linkedin.com/in/harshit-gupta-667545235/"><img src={Linkdin} alt="insta" /></a>
                         <a href="https://www.instagram.com/harshit__7548/"><img src={Instagram} alt="linkedin" /></a>
-                        <a href="https://github.com/Harshit0032"><img src={Github} alt="git" /></a>
+                        <a href="https://github.com/Harshitgupta008"><img src={Github} alt="git" /></a>
                     </div>
                     <form className='contact_inner_card' onSubmit={postMessage}>
                         {

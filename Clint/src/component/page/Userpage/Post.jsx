@@ -1,28 +1,17 @@
 import "./Post.css"
 import { Useauth } from "../../../Auth";
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import downloadicon from "../../image/downloadbut.png"
+import deletepost from "../../image/bin.png"
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 function Post() {
     const [allImages, setAllImages] = useState([])
     const { token } = Useauth();
-    const [backgroundChange, setBackgroundChange] = useState({ backgroundColor: "white", color: "#8224E3" })
-    const handleMouseDown = (id) => {
-        setBackgroundChange((prev) => ({
-            ...prev,
-            [id]: { backgroundColor: "#8224E3", color: "white" },
-        }));
-    };
 
-    const handleMouseUp = (id) => {
-        setBackgroundChange((prev) => ({
-            ...prev,
-            [id]: { backgroundColor: "white", color: "#8224E3" },
-        }));
-    };
 
-     // get all images
-     const UserImages = async () => {
+    // get all images
+    const UserImages = async () => {
         try {
             const checkUser = await fetch("/api/Getimages", {
                 method: "GET",
@@ -42,7 +31,7 @@ function Post() {
     }
 
     // delete image from user
-    const DeleteImage = async (id,image)=>{
+    const DeleteImage = async (id, image) => {
         try {
             const checkUser = await fetch(`/api/Deleteimages/${id}`, {
                 method: "DELETE",
@@ -63,9 +52,9 @@ function Post() {
         }
         toast.success("Image Deleted")
     }
-    useEffect(()=>{
+    useEffect(() => {
         UserImages();
-    },[allImages])
+    }, [allImages])
     return (
         <>
 
@@ -80,9 +69,21 @@ function Post() {
                                 return (
                                     <>
                                         <div key={i} className="imagecard_post">
-                                            <img src={ele.image} alt="user_post" />
-                                            <button onMouseDown={() => handleMouseDown(ele.id)} onMouseUp={() => handleMouseUp(ele.id)} 
-                                            style={backgroundChange[ele.id]} onClick={() => DeleteImage(ele.id, ele.image)} className="post_button">Delete Post</button>
+                                            <img className="user_post" src={ele.image} alt="user_post" />
+                                            <div className="handle_but">
+                                                <button onClick={() => DeleteImage(ele.id, ele.image)} className="post_button delete_post">
+                                                    <img className='downloadicon_post' src={deletepost} alt="" />
+                                                </button>
+                                                <button onClick={() => {
+                                                    const link = document.createElement('a');
+                                                    link.href = ele.image;
+                                                    link.download = 'image';
+                                                    link.click();
+                                                }}
+                                                    className="post_button download_post">
+                                                    <img className='downloadicon_post' src={downloadicon} alt="" />
+                                                </button>
+                                            </div>
                                         </div>
                                     </>
                                 )

@@ -2,6 +2,7 @@ import './Page.css'
 import "./Userpage/Post.css";
 import { Useauth } from "../../Auth";
 import { useEffect, useState } from 'react';
+
 function Home() {
     const { token } = Useauth();
     const { isLoggedin } = Useauth();
@@ -42,7 +43,7 @@ function Home() {
                                         return (
                                             <>
                                                 <div key={i} className="imagecard_post">
-                                                    <img src={ele.image} alt="user_post" />
+                                                    <img className='user_post' src={ele.image} alt="user_post" />
                                                 </div>
                                             </>
                                         )
